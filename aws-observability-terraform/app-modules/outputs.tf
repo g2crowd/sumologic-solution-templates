@@ -80,6 +80,7 @@ output "sumologic_content_rds" {
 
 output "sumologic_metric_rules_rds" {
   value       = module.rds_app.sumologic_metric_rules
+  sensitive   = true
   description = "This output contains metric rules required for rds app."
 }
 
@@ -140,6 +141,7 @@ output "sumologic_content_nlb" {
 
 output "sumologic_metric_rules_nlb" {
   value       = module.nlb_app.sumologic_metric_rules
+  sensitive   = true
   description = "This output contains metric rules required for nlb app."
 }
 

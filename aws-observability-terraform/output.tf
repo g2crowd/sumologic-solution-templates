@@ -4,8 +4,13 @@ output "Apps" {
   sensitive = true
 }
 
-output "Collection" {
-  value       = module.collection-module
+output "g2dev-us-east-1" {
+  value       = module.g2dev-us-east-1
   description = "All outputs related to collection and sources."
-  sensitive = true
 }
+
+# output "Collection" {
+#   value       = module.collection-module
+#   description = "All outputs related to collection and sources."
+#   sensitive = true
+# }

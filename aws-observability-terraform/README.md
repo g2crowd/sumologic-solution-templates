@@ -1,3 +1,7 @@
+
+Steps - [Deploy with Terraform](https://help.sumologic.com/Observability_Solution/AWS_Observability_Solution/01_Deploy_and_Use_AWS_Observability/05_Deploy_AWS_Observability/Deploy_with_Terraform)
+
+
 ## Requirements
 
 | Name | Version |

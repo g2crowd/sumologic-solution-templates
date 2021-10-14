@@ -45,7 +45,7 @@ function should_create_fields() {
         # Credential Issue
         return 2
     fi
-    
+
     if ! jq -e '.remaining' <<< "${RESPONSE}" ; then
         printf "Failed requesting fields API:\n%s\n" "${RESPONSE}"
         # Permissions/credential issuses
@@ -54,7 +54,7 @@ function should_create_fields() {
 
     local REMAINING
     readonly REMAINING=$(jq -e '.remaining' <<< "${RESPONSE}")
-  
+
     if [ $REMAINING -ge ${#awso_list[*]} ] ; then
         # Function returning with success
         return 0
@@ -80,7 +80,7 @@ if [ $outputVal == 0 ] ; then
             continue
         fi
         # Field exist in Sumo org, hence import
-        terraform import \
+        terraform14 import \
             sumologic_field."${FIELD}" "${FIELD_ID}"
     done
 elif [ $outputVal == 1 ] ; then

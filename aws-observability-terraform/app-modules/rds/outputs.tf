@@ -15,5 +15,6 @@ output "sumologic_content" {
 
 output "sumologic_metric_rules" {
   value       = module.rds_module.sumologic_metric_rules
+  sensitive   = true
   description = "This output contains metric rules required for rds app."
 }

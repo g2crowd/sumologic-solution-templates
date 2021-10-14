@@ -61,4 +61,5 @@ variable "aws_account_alias" {
     condition     = can(regex("[a-z0-9]*", var.aws_account_alias))
     error_message = "Alias must only contain lowercase letters, number and length less than or equal to 30 characters."
   }
+  default    = "g2"
 }
