@@ -40,3 +40,14 @@ module "g2dev-us-east-1" {
   access_key                = var.sumologic_access_key
   environment               = var.sumologic_environment
 }
+
+module "g2tracking-us-east-1" {
+  source    = "./source-module"
+  providers = { aws = aws.g2tracking-us-east-1 }
+
+  aws_account_alias         = "g2tracking"
+  sumologic_organization_id = var.sumologic_organization_id
+  access_id                 = var.sumologic_access_id
+  access_key                = var.sumologic_access_key
+  environment               = var.sumologic_environment
+}
