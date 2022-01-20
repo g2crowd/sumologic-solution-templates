@@ -1,3 +1,6 @@
+# NOTE - Update account ids in role_arn of each provider
+# Also update bucket name and account id in tf backend config
+
 provider "sumologic" {
   environment = var.sumologic_environment
   access_id   = var.sumologic_access_id
@@ -25,7 +28,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket       = "<bucket_id>"
+    bucket       = "g2-sumologic-tf-state"
     key          = "global/terraform.tfstate"
     region       = "us-east-1"
     role_arn     = "arn:aws:iam::<g2infra_account_id>:role/sumologic_terraform_role"
@@ -52,16 +55,78 @@ provider "aws" {
  }
 }
 
-# provider "aws" {
-#   region = "us-east-1"
-#   # Below properties should be added when you would like to onboard more than one region and account
-#   # More Information regarding AWS Profile can be found at -
-#   #
-#   # Access configuration
-#   #
-#   # profile = <Provide a profile as setup in AWS CLI>
-#   #
-#   # Terraform alias
-#   #
-#   # alias = <Provide a terraform alias for the aws provider. For eg :- production-us-east-1>
-# }
+provider "aws" {
+  region = "us-east-1"
+  alias  = "g2analytics-us-east-1"
+
+  assume_role {
+    role_arn     = "arn:aws:iam::<g2analytics_account_id>:role/terraform_role"
+    session_name = "sumologic"
+  }
+
+  default_tags {
+   tags = {
+     owner       = "terraform"
+     project     = "sumologic"
+     team        = "infra"
+     environment = "production"
+   }
+ }
+}
+
+provider "aws" {
+  region = "us-east-1"
+  alias  = "g2buyerintent-us-east-1"
+
+  assume_role {
+    role_arn     = "arn:aws:iam::<g2buyerintent_account_id>:role/terraform_role"
+    session_name = "sumologic"
+  }
+
+  default_tags {
+   tags = {
+     owner       = "terraform"
+     project     = "sumologic"
+     team        = "infra"
+     environment = "production"
+   }
+ }
+}
+
+provider "aws" {
+  region = "us-east-1"
+  alias  = "g2ue-us-east-1"
+
+  assume_role {
+    role_arn     = "arn:aws:iam::<g2ue_account_id>:role/terraform_role"
+    session_name = "sumologic"
+  }
+
+  default_tags {
+   tags = {
+     owner       = "terraform"
+     project     = "sumologic"
+     team        = "infra"
+     environment = "production"
+   }
+ }
+}
+
+provider "aws" {
+  region = "us-east-1"
+  alias  = "g2track-us-east-1"
+
+  assume_role {
+    role_arn     = "arn:aws:iam::<g2track_account_id>:role/terraform_role"
+    session_name = "sumologic"
+  }
+
+  default_tags {
+   tags = {
+     owner       = "terraform"
+     project     = "sumologic"
+     team        = "infra"
+     environment = "production"
+   }
+ }
+}
